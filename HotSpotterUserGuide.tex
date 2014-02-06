@@ -246,48 +246,58 @@ for running HotSpotter:
     selects either the next image that does not already have an ROI or the next chip without an
     orientation. 
 
-\item \verb+Options -> Toggle Plot Widget+: 
-    shows the results plot in a separate pane.  This is particularly useful for
-    resizing the pane when there are many results.
+\item \verb+Actions -> New Chip Property+:  
+    record metadata as a series of one or more attribute/value pairs for any
+    user defined metadata.  HotSpotter will automatically import existing
+    metadata from StripeSpotter databases.
+
+
+%\item \verb+Options -> Toggle Plot Widget+: 
+    %shows the results plot in a separate pane.  This is particularly useful for
+    %resizing the pane when there are many results.
 
 \item \verb+Options -> Edit Preferences+: 
     change the behavior of HotSpotter. For now, these are not very well
     documented and should only be used with extreme care or collaboration with
     the HotSpotter team.
 
-\item \verb+Convenience -> Convert All Images to Chips+: 
-    make each image its own ROI and therefore image chip.
+%\item \verb+Convenience -> Convert All Images to Chips+: 
+    %make each image its own ROI and therefore image chip.
 
-\item \verb+Convenience -> Batch Change Name+:  
-    change all chip instances of a given name to a new name. This is useful for
-    when the same animal is grouped under two different names.
+%\item \verb+Convenience -> Batch Change Name+:  
+    %change all chip instances of a given name to a new name. This is useful for
+    %when the same animal is grouped under two different names.
 
-\item \verb+Convenience -> Add Metadata Property+:  
-    record metadata as a series of one or more attribute/value pairs for any
-    user defined metadata.  HotSpotter will automatically import existing
-    metadata from StripeSpotter databases.
+%\item \verb+Convenience -> Assign Matches Above Threshold+: 
+    %HotSpotter will automatically run each chip in the database as a query and
+    %assigns it as a match to any chips whose matching score is above a
+    %user-define threshold. 
 
-\item \verb+Convenience -> Assign Matches Above Threshold+: 
-    HotSpotter will automatically run each chip in the database as a query and
-    assigns it as a match to any chips whose matching score is above a
-    user-define threshold. 
-
-\item \verb+Convenience -> View Data Directory+: 
+\item \verb+Help -> View Data Directory+: 
     Opens the current database directory.
 
-\item \verb+Convenience -> View Source Directory+: (primarily for developer usage)
+\item \verb+Help -> View Source Directory+: (primarily for developer usage)
     Opens the HotSpotter source directory. 
 
-\item \verb+Convenience -> View Internal Directory+: 
-    Opens the current database's {\tt .hs\_internals} directory
+\item \verb+Help -> View Internal Directory+: 
+    Opens the current database's {\tt \_hsdb} directory
 
-\item \verb+Matching Experiment+: (primarily for developer usage)
-    Runs an experiment to see what matches HotSpotter assigns to each chip.
-    Output is written to the database directory. 
+\item \verb+Help -> Delete Computed Directory+: 
+    Removes all of HotSpotter's internal cache. It should be used if you suspect
+    the database has been corrupted. This forces everything to be recomputed. 
 
-\item \verb+Run Name Consistency Experiment+: (primarily for developer usage) 
-    Runs an experiment to see if HotSpotter agrees with the current labeling.
-    Output is written to the database directory. 
+\item \verb+Help -> Delete Global Preferences+: 
+    This removes HotSpotter's  external cache, which may have inconsistent
+    file formats between versions. If HotSpotter has trouble loading try this
+    first. 
+
+%\item \verb+Matching Experiment+: (primarily for developer usage)
+    %Runs an experiment to see what matches HotSpotter assigns to each chip.
+    %Output is written to the database directory. 
+
+%\item \verb+Run Name Consistency Experiment+: (primarily for developer usage) 
+    %Runs an experiment to see if HotSpotter agrees with the current labeling.
+    %Output is written to the database directory. 
 
 \end{itemize}
   
@@ -315,7 +325,7 @@ errors:
         If something looks corrupted or ROIs are being oddly drawn, the user
         should consider deleting the computed directory.  Running  the command 
         {\tt (Convenience \textrightarrow{} View Internal Directory)} will open
-        {\tt user\_database\_dir/.hs\_internals} directory. From here the
+        {\tt user\_database\_dir/\_hsdb} directory. From here the
         {\tt computed} directory may be deleted. This will cause the program
         to recompute all of its data. The user may have to restart HotSpotter.\\
 
