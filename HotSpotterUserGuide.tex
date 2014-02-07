@@ -55,13 +55,13 @@
 \section{Usage}  This document assumes that you have already downloaded and
 installed the Windows or Mac version of the HotSpotter software.  The software
 is compatible with Linux, but is distributed as source only; installers are not
-currently provided. It describes the basic steps of running HotSpotter to
+currently provided for Linux. Furthermore, this document's purpose is to describe the basic steps of running HotSpotter to
 identify individual animals, including opening a database (or creating a new
 one), importing images, selecting ROIs, querying, and naming.  The instructions
 are primarily focused on the Mac version of the software, but adaptation to the
-windows version is easy.  Just know that the control key ({\tt Ctrl}) on windows
+Windows version is easy.  Just know that the control key ({\tt Ctrl}) on Windows
 is equivalent to the command key ({\tt Cmd} = \cmdkey) on Mac. This guide will
-use the mac notation.
+use the Mac notation.
 
     \subsection{Opening the Program}
     When HotSpotter is first run, the program prompts the user to open a
@@ -90,8 +90,8 @@ use the mac notation.
 
 
     HotSpotter can also read StripeSpotter databases by opening the
-    StripeSpotter database's {\tt data} directory.  WHAT ABOUT
-    PREVIOIUS VERSIONS.
+    StripeSpotter database's {\tt data} directory.  Previous versions of HotSpotter databases
+   are also compatible.
     
     \subsection{Importing images}
         In order to add one or more images to the database, there are two options. To manually select specific images from a directory, there is the command
@@ -105,8 +105,7 @@ use the mac notation.
         \begin{center}
             \includegraphics[scale=0.15]{images/added.png}
         \end{center}
-        HotSpotter will copy all selected images into its images directory.  You may also import images by directory from the menu.
-        These are automatically added to the database and may be seen under ``Image Table'
+        HotSpotter will copy all selected images into the current database's directory; images that have been added may be seen under the ``Image Table'.
 
     \subsection{Defining Chips with ROIs and Orientation}
         Before using HotSpotter to identify an animal in an image ---
@@ -130,37 +129,39 @@ use the mac notation.
         side of making the ROI too large rather than too small.
 
         In order to specify an ROI, the Image Table should be
-        highlighted and then the image should be selected (click on
-        this image).  Next, click
+        highlighted and an image should be selected.  Next, click
         \begin{Verbatim}[commandchars=\\\{\}]
         Actions \textrightarrow Add Chip [A]
         \end{Verbatim}
-        and select the  ROI clicking two image points in the Image
-        View to specify opposite corners of the ROI bounding box.
+        and select the ROI by clicking two points in the resulting Image
+        View'to specify opposite corners of the ROI bounding box.
 
         \;
 
-        If you don't like your ROI you can click on it and reselect it
+        If you do not like the resulting ROI, you can click on it to reselect an new ROI for that chip by
         using
         \begin{Verbatim}[commandchars=\\\{\}]
         Actions \textrightarrow Reselect ROI [R]
         \end{Verbatim}
-        You can use remove it entirely using 
+        You can use remove it entirely by using 
         \begin{Verbatim}[commandchars=\\\{\}]
         Actions \textrightarrow Delete Chip
         \end{Verbatim}
 
-        The default orientation of each chip is horizontal, and this is set
-        internally by HotSpotter.  This is usually sufficient when
+        The default orientation of every chip is horizontal, and this is set
+        automatically by HotSpotter.  This is usually sufficient when
         taking ``normal'' pictures of standing
         animals, such as zebras or giraffes.  On the other hand, for overhead
         pictures of animals like frogs, specification of the
         orientation is \textbf{crucial for accurate recognition}.  The
         orientation is best determined by drawing an axis within the
         ROI of the animal in a way that can be repeated for each
-        animal.  For frog images this is the spine.
+        animal.  For frog images, the repeatable orientation is selected along the spine, from the tip of the mouth to tip of the tail.  For zebra images, the repeatable orientation is 
+	selected along the top of the back, from the withers to the point of the croup.  Any orientation can be used, as long as it is repeatable and can be generally applied to all members of the species.
 
-        In order to specify an orientation other than the default
+ 	\;
+        
+	In order to specify an orientation other than the default
         (horizontal) orientation, the user must click
         \begin{Verbatim}[commandchars=\\\{\}]
         Actions \textrightarrow Reselect Orientation [O]
@@ -170,12 +171,12 @@ use the mac notation.
         \end{center}
 
         \noindent
-        and then clicking on two points on the Image View to define
-        the orientation axis.  Note that the angle does not have to be
+        By clicking on two points within the Image View, the chip will be given a new orientation along the selected
+       orientation axis.  Note that the angle does not have to be
         selected perfectly each time --- pretty close will suffice ---
         but you should be consistent with the order in which you
-        click, such as first clicking on the rump and then click on
-        the head.
+        click (for example, with frogs, by selecting the mouth and then subsequently the tail).  By reversing the order
+	of the clicks, you will orient the chip to be inverted compared to all other chips, which will cause HotSpotter to fail.
 
     \subsection{Chip Properties Display (Optional)} 
         HotSpotter uses each ROI and orientation to generate a chip. 
@@ -198,20 +199,15 @@ use the mac notation.
             \includegraphics[scale=0.1]{images/chip-hotspot.png}
         \end{center}
 
-        
-        \begin{center}
-          WHAT WAS HERE?
-        \end{center}
-
     \subsection{Running a Query}
-        A Query can be run on the selected chip.
+        A Query can be run on any selected chip.
 
         \begin{Verbatim}[commandchars=\\\{\}]
         Actions \textrightarrow Query [Q]
         \end{Verbatim}
         
 \noindent
-        This will quickly find similar chips in the database.  The program will
+        This will quickly find similar chips in the database.  HotSpotter will
         automatically rank the chips in order of similarity and will highlight
         the portions of the image that it identifies as being most
         similar.
@@ -223,18 +219,17 @@ use the mac notation.
 
             \includegraphics[scale=0.212]{images/query-result.png}
         \end{center}
-        In this display, there are six results, each showing a pair of images.  In each
+        In this example Query View window, there are six results, each showing a pair of images.  In each
         pair, the query chip is shown on top and the
         potentially-matching chip is shown on the bottom.  Clicking on
         the pair will show a highlighted display.  You will also
-        notice a score for each match.  The scores tend to vary a lot
-        according to species and size of the image set.  Small image
-        sets will produce greater scores, as will giraffes and Grevy's
+        notice a score for each match.  The scores tend to vary according to species and size of the image set.  
+	Small image sets will produce greater scores as will certain datasets, such as giraffes and Grevy's
         zebras. 
      
 \noindent
-  Once you decides based on a query that two or more chips show the
-  same zebra, you record this decision by giving the chips the same
+  Once you decide, based on the query, which chips show the
+  same animal, you may record this decision by giving the chips the same
   name. This requires an understanding
   of the meaning of the names within HotSpotter, as described next.
 
@@ -248,15 +243,15 @@ use the mac notation.
 \end{center}
 
 \noindent
-  The Chip ID is the unique numerical index HotSpotter applies to
+  The Chip ID is the unique numerical index that HotSpotter applies to
   each chip.  (Remember, there can be more than one ROI/chip per image.)
   As HotSpotter does its work and chips are successfully matched,
-  users will want to assign names to individual animals and use this
-  same name for all chips in which the animal appears.  Initially,
+  users should assign unique names to individual animals and use the same 
+  name for all chips in which that specific animal appears.  Initially,
   before an image is recognized, the ``Name'' column value will
   be specified as ``\_\_\_\_'' (four underscores).  This denotes an
   unidentified chip - a user may double-click on a name to edit. 
-  To view animals that match, simply go to the Name View to view all of the matched objects with the same name. 
+  To view animals that match, simply go to the Name Table to view all of the matched animals with the same name. 
   Use of copying and pasting from one chip name to the other makes this process less prone to
   typing errors.
 
@@ -335,7 +330,7 @@ for running HotSpotter:
 \section{A Bit of Troubleshooting}
 
 In the event that HotSpotter behaves unexpectedly, the first thing to try is a
-restarting the program. If the error persists, the following will fix common
+restarting of the program. If the error persists, the following will fix common
 errors: 
 
 \begin{itemize}
@@ -346,7 +341,7 @@ errors:
         problems. Deleting the {\tt \texttildelow/.hotspotter}\footnote{Note
             that {\tt \texttildelow} denotes the user's home folder} folder may fix some issues.
             
-        You may also perform this action from the gui by using: \verb+Help -> Delete Global Preferences+: \\
+        You may also perform this action from HotSpotter by using: \verb+Help -> Delete Global Preferences+: \\
 
     %\item \textbf{Re-Import the Images}\\
         %If the images you've imported aren't showing up, you can always re-import
@@ -356,20 +351,20 @@ errors:
     \item \textbf{Delete the Computed Directory}\\
         If something looks corrupted or ROIs are being oddly drawn, the user
         should consider deleting the computed directory.  Running  the command 
-        {\tt (Help \textrightarrow{} View Internal Directory)} will open
-        {\tt user\_database\_dir/\_hsdb} directory. From here the
-        {\tt computed} directory may be deleted. This will cause the program
-        to recompute all of its data. The user may have to restart HotSpotter.\\
+        {\tt (Help \textrightarrow{} Delete Computed Directory)} will delete cached and 
+	other temporary data and force HotSpotter to recompute all of its data; this can be done safely, but at the cost of 
+	higher initial wait times as HotSpotter recomputes some information. \\
 
 
-    \item (UPDATE ME!!!!!)  \textbf{Mac OSX 10.8 Gatekeeper / 10.9 Mavericks}\\
-      On the latest Mac operating systems the software may not run immediately.
+    \item \textbf{Mac OSX 10.8 Mountrain Lion \& 10.9 Mavericks Gatekeeper}\\
+      On the latest two Mac operating systems, the software may not run immediately.
       This error is due to a security feature called Gatekeeper.  If the app
       fails to run, please do the following:
         \begin{enumerate}
             \item Go to {\tt System Preferences} --- Click the Apple icon in the menu bar (top-left of the screen) and select {\tt System Preferences} in the drop down menu.
             \item Go to {\tt Security \& Privacy} --- It is located on the top row, entitled {\tt Personal}.
-            \item Go to the {\tt General} tab<F4>.
+            \item Go to the {\tt General} tab.
+	  \item On 10.9 Mavericks, there may be a button that will allow HotSpotter to open.  Simply click this button, skip the remaining steps, and attempt to open up HotSpotter again.  For 10.8 Mountain Lion users, continue below.
             \item Authenticate --- Click on the lock at the bottom-left corner of the screen and subsequently input your computer username and password.
             \item In the bottom half of the {\tt General} tab, there will be the following selection:
                 \begin{Verbatim}
