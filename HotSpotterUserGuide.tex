@@ -52,14 +52,13 @@
 
 \DeclareRobustCommand{\cmdkey}{\raisebox{-.035em}{\includegraphics[height=.75em]{images/command}}}
 
-\section{Usage}  This document assumes that you have already downloaded and
-installed the Windows or Mac version of the HotSpotter software.  The software
-is compatible with Linux, but is distributed as source only; installers are not
-currently provided for Linux. Furthermore, this document's purpose is to describe the basic steps of running HotSpotter to
+\section{Usage}  This document assumes that you have already the HotSpotter software running or at least ready to run on your computer software on your computer.  For Windows and Mac users, this entails downloads and installing the software.  For Linux users, this means you have downloaded the source and built HotSpotter.
+
+This document's purpose is to describe the basic steps of running HotSpotter to
 identify individual animals, including opening a database (or creating a new
 one), importing images, selecting ROIs, querying, and naming.  The instructions
 are primarily focused on the Mac version of the software, but adaptation to the
-Windows version is easy.  Just know that the control key ({\tt Ctrl}) on Windows
+Windows version or the Linux version is easy.  Just know that the control key ({\tt Ctrl}) on Windows
 is equivalent to the command key ({\tt Cmd} = \cmdkey) on Mac. This guide will
 use the Mac notation.
 
@@ -94,7 +93,7 @@ use the Mac notation.
 
     HotSpotter can also read StripeSpotter databases by opening the
     StripeSpotter database's {\tt data} directory.  Previous versions of HotSpotter databases
-   are also compatible.
+   are also compatible, but the first time you use a database from an older version you should delete the old ``preferences'' --- see the end of Section 2 for details.  
     
     \subsection{Importing images}
         In order to add one or more images to the database, there are two options. To manually select specific images from a directory, there is the command
@@ -105,14 +104,15 @@ use the Mac notation.
         \begin{Verbatim}[commandchars=\\\{\}]
         File \textrightarrow Import Images (select directory)
         \end{Verbatim}
+         HotSpotter will copy all selected images into the current database's directory; images that have been added may be seen under the ``Image Table'. 
+
         \begin{center}
             \includegraphics[scale=0.15]{images/added.png}
         \end{center}
-        HotSpotter will copy all selected images into the current database's directory; images that have been added may be seen under the ``Image Table'.
-
+   
     \subsection{Defining Chips with ROIs and Orientation}
         Before using HotSpotter to identify an animal in an image ---
-        or, equivalently, find other images that show the same
+        in other words to find other images that show the same
         animal ---- a region of interest (ROI) and an orientation must
         be assigned.  (The sub-image extracted from an ROI is called a
         ``chip''.)  The ROIs must be specified first, one for each
@@ -141,7 +141,7 @@ use the Mac notation.
 
         \;
 
-        If you do not like the resulting ROI, you can click on it to reselect an new ROI for that chip by
+        If you would like to change the resulting ROI, you can click on it to reselect an new ROI for that chip by
         using
         \begin{Verbatim}[commandchars=\\\{\}]
         Actions \textrightarrow Reselect ROI [R]
@@ -160,7 +160,7 @@ use the Mac notation.
         orientation is best determined by drawing an axis within the
         ROI of the animal in a way that can be repeated for each
         animal.  For frog images, the repeatable orientation is selected along the spine, from the tip of the mouth to tip of the tail.  For zebra images, the repeatable orientation is 
-	selected along the top of the back, from the withers to the point of the croup.  Any orientation can be used, as long as it is repeatable and can be generally applied to all members of the species.
+	selected along the top of the back, from the withers to the point of the croup.  Any orientation can be used, as long as it is repeatable and can be generally applied to all members of the species. 
 
  	\;
         
@@ -175,7 +175,7 @@ use the Mac notation.
 
         \noindent
         By clicking on two points within the Image View, the chip will be given a new orientation along the selected
-       orientation axis.  Note that the angle does not have to be
+       orientation axis.  Note that the orientation does not have to be
         selected perfectly each time --- pretty close will suffice ---
         but you should be consistent with the order in which you
         click (for example, with frogs, by selecting the mouth and then subsequently the tail).  By reversing the order
@@ -308,12 +308,19 @@ for running HotSpotter:
     Opens the current database's {\tt \_hsdb} directory
 
 \item \verb+Help -> Delete Computed Directory+: 
-    Removes all of HotSpotter's internal cache. It should be used if you suspect
-    the database has been corrupted. This forces everything to be recomputed. 
+    Removes all of HotSpotter's internal cache.If something looks corrupted or ROIs are being oddly drawn, the user
+        should consider deleting the computed directory.  Running  this will delete cached and 
+	other temporary data and force HotSpotter to recompute all of its data; this can be done safely, but at the cost of 
+	higher initial wait times --- potentially much higher for large databases --- as HotSpotter recomputes some information. 
 
 \item \verb+Help -> Delete Global Preferences+: 
-    This resets hotspotters external preferences. You may need to do this if you
-    are upgrading versions. 
+    HotSpotter keeps a small set of preference files in the user's  home directory.
+        These files remember the last database opened as well as other
+        preferences. When updating to new versions these can sometimes cause
+        problems.  You can get rid of this remembered information within HotSpotter.   If you do this and if you previously had special settings on particular databases, you will need to re-enter these settings.  You can also   
+       perform this action by deleting the {\tt \texttildelow/.hotspotter}\footnote{Note
+            that {\tt \texttildelow} denotes the user's home folder} folder outside HotSpotter.
+     
     %This removes HotSpotter's external cache, which may have inconsistent
     %file formats between versions. If HotSpotter has trouble loading try this
     %first. 
@@ -337,54 +344,38 @@ restarting of the program. If the error persists, the following will fix common
 errors: 
 
 \begin{itemize}
-    \item \textbf{Delete your preference directory.}\\
-        HotSpotter keeps a small set of preference files in the user's  home directory.
-        These files remember the last database opened as well as other
-        preferences. When updating to new versions these can sometimes cause
-        problems. Deleting the {\tt \texttildelow/.hotspotter}\footnote{Note
-            that {\tt \texttildelow} denotes the user's home folder} folder may fix some issues.
-            
-        You may also perform this action from HotSpotter by using: \verb+Help -> Delete Global Preferences+: \\
 
     %\item \textbf{Re-Import the Images}\\
         %If the images you've imported aren't showing up, you can always re-import
         %the images in\\ {\tt user\_database\_dir/images}
         %directory. (REALLY???  THIS DOES NOT CREATE PROBLEMS???)  \\
 
-    \item \textbf{Delete the Computed Directory}\\
-        If something looks corrupted or ROIs are being oddly drawn, the user
-        should consider deleting the computed directory.  Running  the command 
-        {\tt (Help \textrightarrow{} Delete Computed Directory)} will delete cached and 
-	other temporary data and force HotSpotter to recompute all of its data; this can be done safely, but at the cost of 
-	higher initial wait times as HotSpotter recomputes some information. \\
-
-
-    \item \textbf{Mac OSX 10.8 Mountrain Lion \& 10.9 Mavericks Gatekeeper}\\
-      On the latest two Mac operating systems, the software may not run immediately.
+    \item \textbf{Mac OSX 10.9 Mavericks --- Gatekeeper}\\
+      On the latest two Mac operating systems, the software may not run immediately. 
       This error is due to a security feature called Gatekeeper.  If the app
       fails to run, please do the following:
         \begin{enumerate}
             \item Go to {\tt System Preferences} --- Click the Apple icon in the menu bar (top-left of the screen) and select {\tt System Preferences} in the drop down menu.
             \item Go to {\tt Security \& Privacy} --- It is located on the top row, entitled {\tt Personal}.
             \item Go to the {\tt General} tab.
-	  \item On 10.9 Mavericks, there may be a button that will allow HotSpotter to open.  Simply click this button, skip the remaining steps, and attempt to open up HotSpotter again.  For 10.8 Mountain Lion users, continue below.
-            \item Authenticate --- Click on the lock at the bottom-left corner of the screen and subsequently input your computer username and password.
-            \item In the bottom half of the {\tt General} tab, there will be the following selection:
-                \begin{Verbatim}
-                    Allow applications downloaded from:
-                    ( ) Mac App Store
-                    (X) Mac App Store and identified developers
-                    ( ) Anywhere
-
-                \end{Verbatim}
-
-                Select {\tt Anywhere} and subsequently select {\tt Allow From Anywhere} in the drop down warning.
-
-            \item Close the {\tt System Preferences} window.
-            \item Install HotSpotter and run it.
-            \item To re-enable security after running HotSpotter once,
-                repeat the above changes to your preferences, except click on
-                \texttt{Mac App Store and identified developers}.
+	  \item On 10.9 Mavericks, there may be a button that will allow HotSpotter to open.  Simply click this button, skip the remaining steps, and attempt to open up HotSpotter again.  % For 10.8 Mountain Lion users, continue below.
+            %\item Authenticate --- Click on the lock at the bottom-left corner of the screen and subsequently input your computer username and password.
+%            \item In the bottom half of the {\tt General} tab, there will be the following selection:
+%                \begin{Verbatim}
+%                    Allow applications downloaded from:
+%                    ( ) Mac App Store
+%                    (X) Mac App Store and identified developers
+%                    ( ) Anywhere
+%
+%                \end{Verbatim}
+%
+%                Select {\tt Anywhere} and subsequently select {\tt Allow From Anywhere} in the drop down warning.
+%
+%            \item Close the {\tt System Preferences} window.
+%            \item Install HotSpotter and run it.
+%            \item To re-enable security after running HotSpotter once,
+%                repeat the above changes to your preferences, except click on
+%                \texttt{Mac App Store and identified developers}.
         \end{enumerate}
 
 
@@ -526,6 +517,8 @@ errors:
 %        \end{enumerate}
 %        \;
 %
+
+\newpage
 
 \section{Source Code}
 
