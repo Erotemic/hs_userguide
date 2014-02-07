@@ -52,17 +52,16 @@
 
 \DeclareRobustCommand{\cmdkey}{\raisebox{-.035em}{\includegraphics[height=.75em]{images/command}}}
 
-\section{Usage}  This document assumes that you have already
-downloaded and installed 
-the Windows or Mac version (WHAT ABOUT LINUX?) of the HotSpotter software.  It describes the basic
-steps of running HotSpotter to identify individual animals, including
-opening a database (or creating a new one), importing images,
-selecting ROIs, querying, and naming.
-The instructions
-are primarily focused on the Mac version of the software, but adaptation to
-the windows version is easy. Just know that the control key ({\tt Ctrl}) on windows
-is equivalent to the command key ({\tt Cmd} = \cmdkey) on Mac. This guide will use the
-mac notation.
+\section{Usage}  This document assumes that you have already downloaded and
+installed the Windows or Mac version of the HotSpotter software.  The software
+is compatible with Linux, but is distributed as source only; installers are not
+currently provided. It describes the basic steps of running HotSpotter to
+identify individual animals, including opening a database (or creating a new
+one), importing images, selecting ROIs, querying, and naming.  The instructions
+are primarily focused on the Mac version of the software, but adaptation to the
+windows version is easy.  Just know that the control key ({\tt Ctrl}) on windows
+is equivalent to the command key ({\tt Cmd} = \cmdkey) on Mac. This guide will
+use the mac notation.
 
     \subsection{Opening the Program}
     When HotSpotter is first run, the program prompts the user to open a
@@ -119,7 +118,7 @@ mac notation.
 %        I REMOVED THIS NEXT PARAGRAPH.  
 %        This is accomplished by
 %        \begin{Verbatim}[commandchars=\\\{\}]
-%        Convenience \textrightarrow Convert All Images to Chips
+%        Help \textrightarrow Convert All Images to Chips
 %        \end{Verbatim}
 %        This option should be used in the relatively rare case that the
 %        animal occupies almost the entire image.
@@ -270,8 +269,9 @@ Here is a brief discussion of are a few additional tricks and options
 for running HotSpotter:
 \begin{itemize}
 \item \verb+Actions -> Select Next+:
-    selects either the next image that does not already have an ROI or the next chip without an
-    orientation. 
+    selects the next image in the database. 
+    %selects either the next image that does not already have an ROI or the next chip without an
+    %orientation. 
 
 \item \verb+Actions -> New Chip Property+:  
     record metadata as a series of one or more attribute/value pairs for any
@@ -288,14 +288,14 @@ for running HotSpotter:
     documented and should only be used with specific guidance from 
     the HotSpotter team.
 
-%\item \verb+Convenience -> Convert All Images to Chips+: 
+%\item \verb+Help -> Convert All Images to Chips+: 
     %make each image its own ROI and therefore image chip.
 
-%\item \verb+Convenience -> Batch Change Name+:  
+%\item \verb+Help -> Batch Change Name+:  
     %change all chip instances of a given name to a new name. This is useful for
     %when the same animal is grouped under two different names.
 
-%\item \verb+Convenience -> Assign Matches Above Threshold+: 
+%\item \verb+Help -> Assign Matches Above Threshold+: 
     %HotSpotter will automatically run each chip in the database as a query and
     %assigns it as a match to any chips whose matching score is above a
     %user-define threshold. 
@@ -344,30 +344,32 @@ errors:
         These files remember the last database opened as well as other
         preferences. When updating to new versions these can sometimes cause
         problems. Deleting the {\tt \texttildelow/.hotspotter}\footnote{Note
-            that {\tt \texttildelow} denotes the user's home folder} folder may fix some issues.\\
+            that {\tt \texttildelow} denotes the user's home folder} folder may fix some issues.
+            
+        You may also perform this action from the gui by using: \verb+Help -> Delete Global Preferences+: \\
 
-    \item \textbf{Re-Import the Images}\\
-        If the images you've imported aren't showing up, you can always re-import
-        the images in\\ {\tt user\_database\_dir/images}
-        directory. (REALLY???  THIS DOES NOT CREATE PROBLEMS???)  \\
+    %\item \textbf{Re-Import the Images}\\
+        %If the images you've imported aren't showing up, you can always re-import
+        %the images in\\ {\tt user\_database\_dir/images}
+        %directory. (REALLY???  THIS DOES NOT CREATE PROBLEMS???)  \\
 
     \item \textbf{Delete the Computed Directory}\\
         If something looks corrupted or ROIs are being oddly drawn, the user
         should consider deleting the computed directory.  Running  the command 
-        {\tt (Convenience \textrightarrow{} View Internal Directory)} will open
+        {\tt (Help \textrightarrow{} View Internal Directory)} will open
         {\tt user\_database\_dir/\_hsdb} directory. From here the
         {\tt computed} directory may be deleted. This will cause the program
         to recompute all of its data. The user may have to restart HotSpotter.\\
 
 
-    \item (UPDATE ME!!!!!)  \textbf{Mac OSX 10.8 Gatekeeper}\\ For Mac OSX 10.8 Mountain
-      Lion users this app might not run.  This error is due to a
-      security feature within Mountain Lion called Gatekeeper.  If the
-      app fails to run, please do the following:
+    \item (UPDATE ME!!!!!)  \textbf{Mac OSX 10.8 Gatekeeper / 10.9 Mavericks}\\
+      On the latest Mac operating systems the software may not run immediately.
+      This error is due to a security feature called Gatekeeper.  If the app
+      fails to run, please do the following:
         \begin{enumerate}
             \item Go to {\tt System Preferences} --- Click the Apple icon in the menu bar (top-left of the screen) and select {\tt System Preferences} in the drop down menu.
             \item Go to {\tt Security \& Privacy} --- It is located on the top row, entitled {\tt Personal}.
-            \item Go to the {\tt General} tab.
+            \item Go to the {\tt General} tab<F4>.
             \item Authenticate --- Click on the lock at the bottom-left corner of the screen and subsequently input your computer username and password.
             \item In the bottom half of the {\tt General} tab, there will be the following selection:
                 \begin{Verbatim}
