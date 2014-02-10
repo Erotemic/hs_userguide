@@ -1,0 +1,38 @@
+
+\newcommand{\HRuled}{\rule{\linewidth}{0.1mm}}
+
+    \textbf{Mac OSX 10.9 Mavericks --- Gatekeeper}\\
+      On the latest two Mac operating systems, the software may not run immediately. 
+      This error is due to a security feature called Gatekeeper.  If the app
+      fails to run, please do the following:
+        \begin{enumerate}
+            \item Go to {\tt System Preferences} --- Click the Apple icon in the menu bar (top-left of the screen) and select {\tt System Preferences} in the drop down menu.
+            \item Go to {\tt Security \& Privacy} --- It is located on the top row, entitled {\tt Personal}.
+            \item Go to the {\tt General} tab.
+	  \item On 10.9 Mavericks, there may be a button that will allow HotSpotter to open.  
+	\begin{Verbatim}
+   "HotSpotter" was blocked from opening because it is not from an 
+   identified developer
+          \end{Verbatim}
+
+	Simply click the button {\tt Open anyway}.  You may stop here, skip the remaining steps, and continue to use HotSpotter. 
+
+           \HRuled
+
+	\item Authenticate --- If the {\tt Open anyway} button did not appear, click on the lock at the bottom-left corner of the screen and subsequently input your computer username and password.
+            \item In the bottom half of the {\tt General} tab, there will be the following selection:
+                \begin{Verbatim}
+   Allow applications downloaded from:
+   ( ) Mac App Store
+   (X) Mac App Store and identified developers
+   ( ) Anywhere
+                \end{Verbatim}
+
+                Select {\tt Anywhere} and subsequently select {\tt Allow From Anywhere} in the drop down warning.
+
+            \item Close the {\tt System Preferences} window.
+            \item Install HotSpotter and run it.
+            \item To re-enable security after running HotSpotter once,
+                repeat the above changes to your preferences, except click on
+                \texttt{Mac App Store and identified developers}.
+	\end{enumerate}

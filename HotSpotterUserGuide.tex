@@ -18,6 +18,7 @@
 
 
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
 \newcommand{\eps}{\varepsilon}
 \newcommand{\ssum}{\displaystyle\sum}
 
@@ -345,39 +346,7 @@ errors:
 
 \begin{itemize}
 
-    %\item \textbf{Re-Import the Images}\\
-        %If the images you've imported aren't showing up, you can always re-import
-        %the images in\\ {\tt user\_database\_dir/images}
-        %directory. (REALLY???  THIS DOES NOT CREATE PROBLEMS???)  \\
-
-    \item \textbf{Mac OSX 10.9 Mavericks --- Gatekeeper}\\
-      On the latest two Mac operating systems, the software may not run immediately. 
-      This error is due to a security feature called Gatekeeper.  If the app
-      fails to run, please do the following:
-        \begin{enumerate}
-            \item Go to {\tt System Preferences} --- Click the Apple icon in the menu bar (top-left of the screen) and select {\tt System Preferences} in the drop down menu.
-            \item Go to {\tt Security \& Privacy} --- It is located on the top row, entitled {\tt Personal}.
-            \item Go to the {\tt General} tab.
-	  \item On 10.9 Mavericks, there may be a button that will allow HotSpotter to open.  Simply click this button, skip the remaining steps, and attempt to open up HotSpotter again.  % For 10.8 Mountain Lion users, continue below.
-            %\item Authenticate --- Click on the lock at the bottom-left corner of the screen and subsequently input your computer username and password.
-%            \item In the bottom half of the {\tt General} tab, there will be the following selection:
-%                \begin{Verbatim}
-%                    Allow applications downloaded from:
-%                    ( ) Mac App Store
-%                    (X) Mac App Store and identified developers
-%                    ( ) Anywhere
-%
-%                \end{Verbatim}
-%
-%                Select {\tt Anywhere} and subsequently select {\tt Allow From Anywhere} in the drop down warning.
-%
-%            \item Close the {\tt System Preferences} window.
-%            \item Install HotSpotter and run it.
-%            \item To re-enable security after running HotSpotter once,
-%                repeat the above changes to your preferences, except click on
-%                \texttt{Mac App Store and identified developers}.
-        \end{enumerate}
-
+    \item \input{gatekeeper.tex}
 
     \item \textbf{Email the Developer}\\
         If all else fails users should send an email to \developeremail{}.
